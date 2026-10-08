@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍎 Gyümölcsnapló</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff5d7, #e8f8e8);
+            color: #263b2b;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 35px 20px 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 42px;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #58705d;
+        }
+
+        .counter {
+            width: 220px;
+            height: 220px;
+            margin: 20px auto 35px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .counter-number {
+            font-size: 58px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .counter-text {
+            font-size: 16px;
+        }
+
+        .fruits {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .fruit {
+            border: none;
+            background: white;
+            border-radius: 20px;
+            padding: 18px;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .fruit:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .fruit:active {
+            transform: scale(0.95);
+        }
+
+        .fruit img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+
+        .fruit-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .fruit-count {
+            margin-top: 5px;
+            color: #6a806e;
+        }
+
+        .reset {
+            display: block;
+            margin: 25px auto 40px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            background: #ef5350;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .reset:hover {
+            background: #d93f3c;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🍓 Gyümölcsnapló</h1>
+    <p>Kattints arra a gyümölcsre, amit ma ettél!</p>
+</header>
+
+<div class="counter">
+    <div class="counter-number" id="total">0</div>
+    <div class="counter-text">adag gyümölcs ma 🍎</div>
+</div>
+
+<div class="fruits">
+
+    <button class="fruit" onclick="addFruit('alma')">
+        <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=300&q=80" alt="Alma">
+        <div class="fruit-name">🍎 Alma</div>
+        <div class="fruit-count" id="alma-count">0 adag</div>
+    </button>
+
+    <button class="fruit" onclick="addFruit('banan')">
+        <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=300&q=80" alt="Banán">
+        <div class="fruit-name">🍌 Banán</div>
+        <div class="fruit-count" id="banan-count">0 adag</div>
+    </button>
+
+    <button class="fruit" onclick="addFruit('eper')">
+        <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=300&q=80" alt="Eper">
+        <div class="fruit-name">🍓 Eper</div>
+        <div class="fruit-count" id="eper-count">0 adag</div>
+    </button>
+
+    <button class="fruit" onclick="addFruit('narancs')">
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=300&q=80" alt="Narancs">
+        <div class="fruit-name">🍊 Narancs</div>
+        <div class="fruit-count" id="narancs-count">0 adag</div>
+    </button>
+
+    <button class="fruit" onclick="addFruit('szolo')">
+        <img src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=300&q=80" alt="Szőlő">
+        <div class="fruit-name">🍇 Szőlő</div>
+        <div class="fruit-count" id="szolo-count">0 adag</div>
+    </button>
+
+    <button class="fruit" onclick="addFruit('dinnye')">
+        <img src="https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=300&q=80" alt="Görögdinnye">
+        <div class="fruit-name">🍉 Görögdinnye</div>
+        <div class="fruit-count" id="dinnye-count">0 adag</div>
+    </button>
+
+    <button class="fruit" onclick="addFruit('barack')">
+        <img src="https://images.unsplash.com/photo-1629828874514-5e3b6c6c9d93?auto=format&fit=crop&w=300&q=80" alt="Barack">
+        <div class="fruit-name">🍑 Barack</div>
+        <div class="fruit-count" id="barack-count">0 adag</div>
+    </button>
+
+    <button class="fruit" onclick="addFruit('kiwi')">
+        <img src="https://images.unsplash.com/photo-1585059895524-72359e06133a?auto=format&fit=crop&w=300&q=80" alt="Kiwi">
+        <div class="fruit-name">🥝 Kiwi</div>
+        <div class="fruit-count" id="kiwi-count">0 adag</div>
+    </button>
+
+</div>
+
+<button class="reset" onclick="resetDay()">🔄 Nap újraindítása</button>
+
+<script>
+    const fruits = {
+        alma: 0,
+        banan: 0,
+        eper: 0,
+        narancs: 0,
+        szolo: 0,
+        dinnye: 0,
+        barack: 0,
+        kiwi: 0
+    };
+
+    function addFruit(fruit) {
+        fruits[fruit]++;
+
+        document.getElementById(fruit + "-count").textContent =
+            fruits[fruit] + " adag";
+
+        updateTotal();
+    }
+
+    function updateTotal() {
+        let total = 0;
+
+        for (let fruit in fruits) {
+            total += fruits[fruit];
+        }
+
+        document.getElementById("total").textContent = total;
+    }
+
+    function resetDay() {
+        for (let fruit in fruits) {
+            fruits[fruit] = 0;
+            document.getElementById(fruit + "-count").textContent = "0 adag";
+        }
+
+        updateTotal();
+    }
+</script>
+
+</body>
+</html>
