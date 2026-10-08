@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -57,7 +58,7 @@
         }
 
         .fruits {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
             padding: 20px;
             display: grid;
@@ -87,7 +88,8 @@
         .fruit img {
             width: 110px;
             height: 110px;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 15px;
             display: block;
             margin: auto;
         }
@@ -135,52 +137,74 @@
 
 <div class="fruits">
 
+    <!-- Alma -->
     <button class="fruit" onclick="addFruit('alma')">
         <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=300&q=80" alt="Alma">
         <div class="fruit-name">🍎 Alma</div>
         <div class="fruit-count" id="alma-count">0 adag</div>
     </button>
 
+    <!-- Banán -->
     <button class="fruit" onclick="addFruit('banan')">
         <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=300&q=80" alt="Banán">
         <div class="fruit-name">🍌 Banán</div>
         <div class="fruit-count" id="banan-count">0 adag</div>
     </button>
 
+    <!-- Eper -->
     <button class="fruit" onclick="addFruit('eper')">
         <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=300&q=80" alt="Eper">
         <div class="fruit-name">🍓 Eper</div>
         <div class="fruit-count" id="eper-count">0 adag</div>
     </button>
 
+    <!-- Narancs -->
     <button class="fruit" onclick="addFruit('narancs')">
         <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=300&q=80" alt="Narancs">
         <div class="fruit-name">🍊 Narancs</div>
         <div class="fruit-count" id="narancs-count">0 adag</div>
     </button>
 
+    <!-- Szőlő -->
     <button class="fruit" onclick="addFruit('szolo')">
         <img src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=300&q=80" alt="Szőlő">
         <div class="fruit-name">🍇 Szőlő</div>
         <div class="fruit-count" id="szolo-count">0 adag</div>
     </button>
 
+    <!-- Görögdinnye -->
     <button class="fruit" onclick="addFruit('dinnye')">
         <img src="https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=300&q=80" alt="Görögdinnye">
         <div class="fruit-name">🍉 Görögdinnye</div>
         <div class="fruit-count" id="dinnye-count">0 adag</div>
     </button>
 
-    <button class="fruit" onclick="addFruit('barack')">
-        <img src="https://images.unsplash.com/photo-1629828874514-5e3b6c6c9d93?auto=format&fit=crop&w=300&q=80" alt="Barack">
-        <div class="fruit-name">🍑 Barack</div>
-        <div class="fruit-count" id="barack-count">0 adag</div>
+    <!-- Körte - a barack helyett -->
+    <button class="fruit" onclick="addFruit('korte')">
+        <img src="https://images.unsplash.com/photo-1514756331096-242fdeb70d4a?auto=format&fit=crop&w=300&q=80" alt="Körte">
+        <div class="fruit-name">🍐 Körte</div>
+        <div class="fruit-count" id="korte-count">0 adag</div>
     </button>
 
+    <!-- Kiwi -->
     <button class="fruit" onclick="addFruit('kiwi')">
         <img src="https://images.unsplash.com/photo-1585059895524-72359e06133a?auto=format&fit=crop&w=300&q=80" alt="Kiwi">
         <div class="fruit-name">🥝 Kiwi</div>
         <div class="fruit-count" id="kiwi-count">0 adag</div>
+    </button>
+
+    <!-- Mangó - új -->
+    <button class="fruit" onclick="addFruit('mango')">
+        <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=300&q=80" alt="Mangó">
+        <div class="fruit-name">🥭 Mangó</div>
+        <div class="fruit-count" id="mango-count">0 adag</div>
+    </button>
+
+    <!-- Ananász - új -->
+    <button class="fruit" onclick="addFruit('ananasz')">
+        <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=300&q=80" alt="Ananász">
+        <div class="fruit-name">🍍 Ananász</div>
+        <div class="fruit-count" id="ananasz-count">0 adag</div>
     </button>
 
 </div>
@@ -195,8 +219,10 @@
         narancs: 0,
         szolo: 0,
         dinnye: 0,
-        barack: 0,
-        kiwi: 0
+        korte: 0,
+        kiwi: 0,
+        mango: 0,
+        ananasz: 0
     };
 
     function addFruit(fruit) {
@@ -221,7 +247,9 @@
     function resetDay() {
         for (let fruit in fruits) {
             fruits[fruit] = 0;
-            document.getElementById(fruit + "-count").textContent = "0 adag";
+
+            document.getElementById(fruit + "-count").textContent =
+                "0 adag";
         }
 
         updateTotal();
@@ -230,3 +258,4 @@
 
 </body>
 </html>
+```
